@@ -18,7 +18,7 @@ Usage:
 import os
 import sys
 
-# Ensure project root is on the path
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.train import train_pipeline
@@ -36,14 +36,14 @@ def main():
     ╚══════════════════════════════════════════════════════════╝
     """)
 
-    # ── Configuration ──
+    
     DATA_DIR = "data"
     OUTPUT_DIR = "outputs"
     TEST_SIZE = 0.2
     RANDOM_STATE = 42
     MAX_DEPTH = 8
 
-    # ── Step 1 & 2 & 3: Train ──
+    
     results = train_pipeline(
         data_dir=DATA_DIR,
         test_size=TEST_SIZE,
@@ -51,19 +51,19 @@ def main():
         max_depth=MAX_DEPTH,
     )
 
-    # ── Step 4: Evaluate ──
+    
     evaluate_pipeline(results, output_dir=OUTPUT_DIR)
 
-    # ── Step 5: Visualize ──
+    
     visualize_pipeline(results, output_dir=OUTPUT_DIR)
 
-    # ── Step 6: Print custom tree structure ──
+    
     print("\n" + "=" * 60)
     print("CUSTOM C4.5 DECISION TREE STRUCTURE (first few levels)")
     print("=" * 60)
     results["custom_tree"].print_tree()
 
-    # ── Summary ──
+    
     print("\n" + "=" * 60)
     print("PIPELINE COMPLETE — Output Files")
     print("=" * 60)
